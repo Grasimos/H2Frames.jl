@@ -337,6 +337,7 @@ export DATA_FRAME,
     HEADERS_FRAME,
     RST_STREAM_FRAME
 # Re-export all public symbols from all submodules for a flat API
+export HTTP2Frame
 export DataFrame, deserialize_data_frame, create_data_frame, combine_data_frames
 export HeadersFrame, create_headers_frame, deserialize_headers_frame
 export PriorityFrame,
@@ -382,14 +383,15 @@ export GoAwayFrame,
     get_error_code
 export PushPromiseFrame, deserialize_push_promise_frame
 export ContinuationFrame, deserialize_continuation_frame
-export FrameException,
-    ProtocolError,
-    FrameSizeError,
-    FlowControlError,
-    CompressionError,
-    SettingsError,
-    UnknownFrameTypeError,
-    FrameError
+export HTTP2Exception, ConnectionLevelError, StreamLevelError,
+       ProtocolError, InternalError, CompressionError, FlowControlError, FrameSizeError,
+       SettingsTimeoutError, StreamClosedError, RefusedStreamError, CancelError,
+       ConnectError, EnhanceYourCalmError, InadequateSecurityError,
+       exception_to_error_code, error_code_name, error_code_description,
+       ErrorCode,
+       NO_ERROR, PROTOCOL_ERROR, INTERNAL_ERROR, FLOW_CONTROL_ERROR, SETTINGS_TIMEOUT,
+       STREAM_CLOSED_ERROR, FRAME_SIZE_ERROR, REFUSED_STREAM, CANCEL, COMPRESSION_ERROR,
+       CONNECT_ERROR, ENHANCE_YOUR_CALM, INADEQUATE_SECURITY, HTTP_1_1_REQUIRED
 
 
 end
