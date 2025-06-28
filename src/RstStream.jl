@@ -213,8 +213,7 @@ end
 Returns a human-readable summary of the RST_STREAM frame.
 """
 function rst_stream_frame_summary(frame::RstStreamFrame)
-    error_name = error_code_name(frame.error_code)
-    return "RST_STREAM[stream=$(frame.stream_id), error=$(error_name)($(frame.error_code))]"
+    return "RST_STREAM[stream=$(frame.stream_id), error=($(frame.error_code))]"
 end
 
 # Display methods
@@ -225,8 +224,7 @@ end
 function Base.show(io::IO, ::MIME"text/plain", frame::RstStreamFrame)
     println(io, "HTTP/2 RST_STREAM Frame:")
     println(io, "  Stream ID: $(frame.stream_id)")
-    println(io, "  Error Code: $(frame.error_code) ($(error_code_name(frame.error_code)))")
-    println(io, "  Description: $(error_code_description(frame.error_code))")
+    println(io, "  Error Code: $(frame.error_code)")
 end
 
 # Equality and hashing
