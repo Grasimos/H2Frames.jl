@@ -375,7 +375,8 @@ export SettingsFrame,
     SETTINGS_INITIAL_WINDOW_SIZE,
     SETTINGS_MAX_FRAME_SIZE,
     SETTINGS_MAX_HEADER_LIST_SIZE,
-    SETTINGS_ENABLE_CONNECT_PROTOCOL
+    SETTINGS_ENABLE_CONNECT_PROTOCOL,
+    SETTINGS_ACK
 export WindowUpdateFrame,
     deserialize_window_update_frame,
     is_connection_level,
