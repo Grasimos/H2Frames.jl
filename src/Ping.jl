@@ -167,7 +167,7 @@ end
 
 # String representation for debugging
 function Base.show(io::IO, frame::PingFrame)
-    ack_str = is_ack(frame) ? " (ACK)" : ""
+    ack_str = is_ping_ack(frame) ? " (ACK)" : ""
     data_hex = join([string(b, base = 16, pad = 2) for b in frame.data], "")
     print(io, "PingFrame$(ack_str)(data=0x$data_hex)")
 end
