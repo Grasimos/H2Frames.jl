@@ -280,6 +280,24 @@ serialize_payload(frame::GenericFrame) = copy(frame.payload)
 # =============================================================================
 # Utility Functions
 # =============================================================================
+# Map frame type numbers to names per RFC 7540
+function frame_type_name(frame_type::Integer)
+    names = Dict(
+        0x0 => :DATA,
+        0x1 => :HEADERS,
+        0x2 => :PRIORITY,
+        0x3 => :RST_STREAM,
+        0x4 => :SETTINGS,
+        0x5 => :PUSH_PROMISE,
+        0x6 => :PING,
+        0x7 => :GOAWAY,
+        0x8 => :WINDOW_UPDATE,
+        0x9 => :CONTINUATION
+    )
+    return get(names, frame_type, :UNKNOWN)
+end
+
+
 
 """
     frame_summary(frame::HTTP2Frame) -> String
@@ -392,6 +410,6 @@ export HTTP2Exception, ConnectionLevelError, StreamLevelError,
        NO_ERROR, PROTOCOL_ERROR, INTERNAL_ERROR, FLOW_CONTROL_ERROR, SETTINGS_TIMEOUT,
        STREAM_CLOSED_ERROR, FRAME_SIZE_ERROR, REFUSED_STREAM, CANCEL, COMPRESSION_ERROR,
        CONNECT_ERROR, ENHANCE_YOUR_CALM, INADEQUATE_SECURITY, HTTP_1_1_REQUIRED
-
+export frame_type_name
 
 end
