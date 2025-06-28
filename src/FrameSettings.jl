@@ -12,7 +12,7 @@ import ..frame_flags
 import ..stream_id
 import ..serialize_frame
 
-
+const SETTINGS_ACK = 0x1 
 
 export SettingsFrame,
     is_ack,
@@ -22,7 +22,8 @@ export SettingsFrame,
     validate_settings_frame,
     get_setting,
     has_setting,
-    settings_to_string
+    settings_to_string,
+    SETTINGS_ACK
 
 
 """
