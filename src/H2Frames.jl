@@ -410,6 +410,23 @@ export HTTP2Exception, ConnectionLevelError, StreamLevelError,
        NO_ERROR, PROTOCOL_ERROR, INTERNAL_ERROR, FLOW_CONTROL_ERROR, SETTINGS_TIMEOUT,
        STREAM_CLOSED_ERROR, FRAME_SIZE_ERROR, REFUSED_STREAM, CANCEL, COMPRESSION_ERROR,
        CONNECT_ERROR, ENHANCE_YOUR_CALM, INADEQUATE_SECURITY, HTTP_1_1_REQUIRED
-export frame_type_name
+export frame_type,
+    frame_flags,
+    stream_id,
+    serialize_payload,
+    serialize_frame,
+    serialize_frame_header,
+    write_uint24_be,
+    deserialize_frame_header,
+    frames_reset!,
+    feed_data!,
+    bytes_available,
+    try_read_frame_header,
+    try_read_complete_frame,
+    compact_buffer!,
+    create_frame,
+    frame_type_name,
+    frame_summary,
+    is_valid_stream_id
 
 end
