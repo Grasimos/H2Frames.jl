@@ -21,6 +21,9 @@ export PingFrame,
     generate_ping_data,
     generate_ping_data_with_timestamp
 
+
+const PING_ACK = 0x1
+
 """
     PingFrame
 
