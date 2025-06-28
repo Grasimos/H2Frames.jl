@@ -306,7 +306,7 @@ Get a summary string for any frame type.
 """
 function frame_summary(frame::HTTP2Frame)
     len = length(serialize_payload(frame))
-    typ_name = frame_type_name(frame_type(frame))
+    typ_name = frame_type_name(Int(frame_type(frame)))
     flgs = frame_flags(frame)
     sid = stream_id(frame)
     # ---------------------------------
