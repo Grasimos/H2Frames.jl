@@ -10,7 +10,7 @@ import ..frame_flags
 import ..stream_id
 
 export PriorityFrame,
-    decode_priority_frame, actual_weight, validate_priority_frame, apply_priority_frame!
+    decode_priority_frame, actual_weight, validate_priority_frame
 
 
 """
