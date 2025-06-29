@@ -9,6 +9,7 @@ import ..serialize_payload
 import ..frame_type
 import ..frame_flags
 import ..stream_id
+import ..get_debug_message
 
 
 export GoAwayFrame,
