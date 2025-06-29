@@ -297,6 +297,18 @@ function frame_type_name(frame_type::Integer)
     return get(names, frame_type, :UNKNOWN)
 end
 
+"""
+Get the debug data as a UTF-8 string from a GOAWAY frame.
+Returns an empty string if no debug data exists.
+"""
+function get_debug_message(frame::HTTP2Frame)
+    try
+        return String(frame.debug_data)
+    catch
+        # Fallback for non-UTF8 data
+        return "0x" * bytes2hex(frame.debug_data)
+    end
+end
 
 
 """
@@ -355,7 +367,7 @@ export DATA_FRAME,
     HEADERS_FRAME,
     RST_STREAM_FRAME
 # Re-export all public symbols from all submodules for a flat API
-export HTTP2Frame
+export HTTP2Frame, get_debug_message
 export DataFrame, deserialize_data_frame, create_data_frame, combine_data_frames
 export HeadersFrame, create_headers_frame, deserialize_headers_frame
 export PriorityFrame,
