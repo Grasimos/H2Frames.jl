@@ -9,7 +9,8 @@ export FRAME_HEADER_SIZE,
     FrameHeader,
     FrameReader,
     SettingsParameter,
-    HTTP2Frame
+    HTTP2Frame,
+    is_valid_frame_size
 export FrameType,
     DATA_FRAME,
     HEADERS_FRAME,
@@ -135,6 +136,16 @@ mutable struct FrameReader # Mutable struct for reading frames
     header::Union{FrameHeader,Nothing} # Frame header or Nothing
 
     FrameReader() = new(UInt8[], 1, nothing, nothing) # Default constructor
+end
+
+"""
+Validates that the size of a received frame payload matches the length
+specified in its header. The keyword `max_frame_size` is used here
+to match the existing call site in `decode_continuation_frame`,
+but it represents the *expected* length from the header.
+"""
+function is_valid_frame_size(payload_length::Integer; max_frame_size::Integer)
+    return payload_length == max_frame_size
 end
 
 end
