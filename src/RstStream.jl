@@ -54,6 +54,7 @@ struct RstStreamFrame <: HTTP2Frame
     end
 end
 
+RstStreamFrame(stream_id::UInt32, error_code::Integer) = RstStreamFrame(stream_id, UInt32(error_code))
 
 
 """
@@ -191,20 +192,20 @@ end
 
 Creates an appropriate RST_STREAM frame for a given exception/error condition.
 """
+
 function create_rst_stream_response(stream_id::UInt32, error::Exception)
     error_code = if isa(error, ProtocolError)
-        PROTOCOL_ERROR
+        GOAWAY_PROTOCOL_ERROR
     elseif isa(error, FlowControlError)
-        FLOW_CONTROL_ERROR
+        GOAWAY_FLOW_CONTROL_ERROR
     elseif isa(error, CompressionError)
-        COMPRESSION_ERROR
+        GOAWAY_COMPRESSION_ERROR
     elseif isa(error, FrameSizeError)
-        FRAME_SIZE_ERROR
+        GOAWAY_FRAME_SIZE_ERROR
     else
-        INTERNAL_ERROR
+        GOAWAY_INTERNAL_ERROR
     end
-
-    return RstStreamFrame(stream_id, error_code)
+    return RstStreamFrame(stream_id, UInt32(error_code))
 end
 
 """
