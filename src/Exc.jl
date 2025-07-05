@@ -24,7 +24,7 @@ export FrameException,
     GOAWAY_INADEQUATE_SECURITY,
     GOAWAY_HTTP_1_1_REQUIRED
 
-abstract type FrameException end
+abstract type FrameException <: Exception end
 
 """
     ProtocolError(msg::String, stream_id::Union{Int,Nothing}=nothing)
