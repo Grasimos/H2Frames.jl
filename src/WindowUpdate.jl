@@ -146,6 +146,13 @@ function create_stream_window_update(stream_id::UInt32, increment::UInt32)
     return WindowUpdateFrame(stream_id, increment)
 end
 
+# New, convenient method for connections that accepts any Integer
+create_connection_window_update(increment::Integer) = create_connection_window_update(UInt32(increment))
+
+function create_stream_window_update(stream_id::UInt32, increment::Integer)
+    return create_stream_window_update(stream_id, UInt32(increment))
+end
+
 # Pretty printing
 function Base.show(io::IO, frame::WindowUpdateFrame)
     level = is_connection_level(frame) ? "connection" : "stream $(frame.stream_id)"
