@@ -3,7 +3,7 @@ uuid = "7468a3b7-930e-48c8-a27b-9d42b62f3d3e"
 license = "MIT"
 authors = ["Gerasimos Panou <gerasimos.panou@gmail.com>"]
 description = "A Julia package for H2 matrix frames."
-version = "0.3.4"
+version = "0.3.5"
 
 [deps]
 HPACK = "03a3583f-3b84-4ec3-931d-7334ff455684"

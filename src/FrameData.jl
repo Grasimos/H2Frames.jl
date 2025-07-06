@@ -227,6 +227,15 @@ large payloads across multiple frames if necessary.
 - `Vector{DataFrame}`: One or more DATA frames containing the data
 """
 function create_data_frame(
+    stream_id::Integer,
+    data::Union{String,Vector{UInt8}};
+    end_stream::Bool = false,
+    max_frame_size::Int = 16384,
+)
+    create_data_frame(UInt32(stream_id), data; end_stream = end_stream, max_frame_size = max_frame_size)
+end
+
+function create_data_frame(
     stream_id::UInt32,
     data::Union{String,Vector{UInt8}};
     end_stream::Bool = false,
