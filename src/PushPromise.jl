@@ -212,7 +212,6 @@ function create_push_promise_frame(
     request_headers::Vector{Pair{String,String}},
     hpack_encoder::HPACKEncoder,
 )
-    # end_headers is always true, as we do not support sending PUSH_PROMISE with CONTINUATION.
     header_block = HPACK.encode_headers(hpack_encoder, request_headers)
 
     return PushPromiseFrame(
@@ -220,6 +219,21 @@ function create_push_promise_frame(
         promised_stream_id,
         header_block;
         end_headers = true,
+    )
+end
+
+# Multiple dispatch: allow any Integer type for stream IDs
+function create_push_promise_frame(
+    original_stream_id::Integer,
+    promised_stream_id::Integer,
+    request_headers::Vector{Pair{String,String}},
+    hpack_encoder::HPACKEncoder,
+)
+    create_push_promise_frame(
+        UInt32(original_stream_id),
+        UInt32(promised_stream_id),
+        request_headers,
+        hpack_encoder,
     )
 end
 
