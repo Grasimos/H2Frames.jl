@@ -145,6 +145,14 @@ CONTINUATION frames created by this function.
 """
 function create_continuation_frames(
     header_block::Vector{UInt8},
+    stream_id::Integer,
+    max_frame_size::Integer,
+)
+    create_continuation_frames(header_block, UInt32(stream_id), UInt32(max_frame_size))
+end
+
+function create_continuation_frames(
+    header_block::Vector{UInt8},
     stream_id::UInt32,
     max_frame_size::UInt32,
 )
