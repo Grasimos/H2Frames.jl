@@ -27,7 +27,6 @@ export SettingsFrame,
     setting_name,
     setting_from_symbol
 
-
 """
     SettingsFrame(parameters::Dict; ack=false)
 
