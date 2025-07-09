@@ -332,24 +332,31 @@ function settings_to_string(settings::Dict{UInt16,UInt32})
     return "{" * join(parts, ", ") * "}"
 end
 
-const SETTING_NAMES = Dict{UInt16, Symbol}(
-    SETTINGS_HEADER_TABLE_SIZE => :SETTINGS_HEADER_TABLE_SIZE,
-    SETTINGS_ENABLE_PUSH => :SETTINGS_ENABLE_PUSH,
-    SETTINGS_MAX_CONCURRENT_STREAMS => :SETTINGS_MAX_CONCURRENT_STREAMS,
-    SETTINGS_INITIAL_WINDOW_SIZE => :SETTINGS_INITIAL_WINDOW_SIZE,
-    SETTINGS_MAX_FRAME_SIZE => :SETTINGS_MAX_FRAME_SIZE,
-    SETTINGS_MAX_HEADER_LIST_SIZE => :SETTINGS_MAX_HEADER_LIST_SIZE,
-    SETTINGS_ENABLE_CONNECT_PROTOCOL => :SETTINGS_ENABLE_CONNECT_PROTOCOL
-)
-
-
 """
     setting_name(setting_code::UInt16) -> Symbol
 
 Μετατρέπει έναν κωδικό ρύθμισης UInt16 στο αντίστοιχο Symbol.
+Αυτή η υλοποίηση χρησιμοποιεί if/elseif για να είναι συμβατή με enums.
 """
 function setting_name(setting_code::UInt16)
-    return get(SETTING_NAMES, setting_code, :UNKNOWN_SETTING)
+    if setting_code == UInt16(SETTINGS_HEADER_TABLE_SIZE)
+        return :SETTINGS_HEADER_TABLE_SIZE
+    elseif setting_code == UInt16(SETTINGS_ENABLE_PUSH)
+        return :SETTINGS_ENABLE_PUSH
+    elseif setting_code == UInt16(SETTINGS_MAX_CONCURRENT_STREAMS)
+        return :SETTINGS_MAX_CONCURRENT_STREAMS
+    elseif setting_code == UInt16(SETTINGS_INITIAL_WINDOW_SIZE)
+        return :SETTINGS_INITIAL_WINDOW_SIZE
+    elseif setting_code == UInt16(SETTINGS_MAX_FRAME_SIZE)
+        return :SETTINGS_MAX_FRAME_SIZE
+    elseif setting_code == UInt16(SETTINGS_MAX_HEADER_LIST_SIZE)
+        return :SETTINGS_MAX_HEADER_LIST_SIZE
+    elseif setting_code == UInt16(SETTINGS_ENABLE_CONNECT_PROTOCOL)
+        return :SETTINGS_ENABLE_CONNECT_PROTOCOL
+    else
+        # Επιστρέφουμε ένα default όνομα για άγνωστες ρυθμίσεις
+        return Symbol("UNKNOWN_SETTING_$(setting_code)")
+    end
 end
 
 
