@@ -24,7 +24,8 @@ export SettingsFrame,
     has_setting,
     settings_to_string,
     SETTINGS_ACK,
-    setting_name
+    setting_name,
+    setting_from_symbol
 
 
 """
@@ -358,6 +359,34 @@ function setting_name(setting_code::UInt16)
         return Symbol("UNKNOWN_SETTING_$(setting_code)")
     end
 end
+
+
+"""
+    setting_from_symbol(name::Symbol) -> UInt16
+
+Μετατρέπει ένα Symbol στο αντίστοιχο UInt16 του κωδικού ρύθμισης,
+χρησιμοποιώντας if/elseif για συνέπεια.
+"""
+function setting_from_symbol(name::Symbol)
+    if name == :SETTINGS_HEADER_TABLE_SIZE
+        return UInt16(SETTINGS_HEADER_TABLE_SIZE)
+    elseif name == :SETTINGS_ENABLE_PUSH
+        return UInt16(SETTINGS_ENABLE_PUSH)
+    elseif name == :SETTINGS_MAX_CONCURRENT_STREAMS
+        return UInt16(SETTINGS_MAX_CONCURRENT_STREAMS)
+    elseif name == :SETTINGS_INITIAL_WINDOW_SIZE
+        return UInt16(SETTINGS_INITIAL_WINDOW_SIZE)
+    elseif name == :SETTINGS_MAX_FRAME_SIZE
+        return UInt16(SETTINGS_MAX_FRAME_SIZE)
+    elseif name == :SETTINGS_MAX_HEADER_LIST_SIZE
+        return UInt16(SETTINGS_MAX_HEADER_LIST_SIZE)
+    elseif name == :SETTINGS_ENABLE_CONNECT_PROTOCOL
+        return UInt16(SETTINGS_ENABLE_CONNECT_PROTOCOL)
+    else
+        throw(ArgumentError("Άγνωστο σύμβολο ρύθμισης: $name"))
+    end
+end
+
 
 
 end

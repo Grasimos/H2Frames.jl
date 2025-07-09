@@ -389,7 +389,8 @@ export SettingsFrame,
     SETTINGS_MAX_HEADER_LIST_SIZE,
     SETTINGS_ENABLE_CONNECT_PROTOCOL,
     SETTINGS_ACK,
-    setting_name
+    setting_name,
+    setting_from_symbol
 export WindowUpdateFrame,
     deserialize_window_update_frame,
     is_connection_level,
