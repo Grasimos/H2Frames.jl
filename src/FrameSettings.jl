@@ -23,7 +23,8 @@ export SettingsFrame,
     get_setting,
     has_setting,
     settings_to_string,
-    SETTINGS_ACK
+    SETTINGS_ACK,
+    setting_name
 
 
 """
@@ -329,6 +330,15 @@ function settings_to_string(settings::Dict{UInt16,UInt32})
     end
 
     return "{" * join(parts, ", ") * "}"
+end
+
+"""
+    setting_name(setting_code::UInt16) -> Symbol
+
+Μετατρέπει έναν κωδικό ρύθμισης UInt16 στο αντίστοιχο Symbol.
+"""
+function setting_name(setting_code::UInt16)
+    return get(SETTING_NAMES, setting_code, :UNKNOWN_SETTING)
 end
 
 
