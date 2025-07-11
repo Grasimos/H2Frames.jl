@@ -97,10 +97,9 @@ function deserialize_window_update_frame(
 )
     if length(payload) != 4
         throw(
-            FrameError(
-                FRAME_SIZE_ERROR,
-                stream_id,
+            FrameSizeError(
                 "WINDOW_UPDATE frame payload must be exactly 4 bytes, got $(length(payload))",
+                stream_id,
             ),
         )
     end
