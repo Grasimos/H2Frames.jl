@@ -74,11 +74,10 @@ struct PriorityFrame <: HTTP2Frame
         if sid == dep
             throw(ProtocolError("PRIORITY frame cannot depend on itself", sid))
         end
-        if weight < 1 || weight > 256
-            throw(FrameSizeError("Weight must be in 1:256", sid))
+        if !(0 <= weight <= 255)
+             throw(FrameSizeError("Weight must be in 0:255", sid))
         end
-        # Store wire value (0-255), actual weight is weight (1-256)
-        new(sid, exclusive, dep, UInt8(weight - 1))
+        new(sid, exclusive, dep, UInt8(weight))
     end
 end
 
