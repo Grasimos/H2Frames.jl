@@ -75,3 +75,7 @@ Pkg.test("H2Frames")
 ## Contributing
 
 Contributions, bug reports, and feature requests are welcome! Please open an issue or submit a pull request on GitHub.
+
+## Author
+
+Gerasimos Panou
