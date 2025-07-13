@@ -10,6 +10,6 @@ Http2Hpack = "03a3583f-3b84-4ec3-931d-7334ff455684"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
-Http2Hpack = "0.2.3"
+Http2Hpack = "0.2"
 Test = "1.11.0"
 julia = "^1.11"
