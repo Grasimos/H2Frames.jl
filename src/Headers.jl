@@ -1,7 +1,7 @@
 module Headers
 # frames/headers.jl - HTTP/2 HEADERS frame implementation
 
-using HPACK
+using H2hpack
 using ..FrameTypes
 using ..Exc
 using ..H2Frames: is_valid_stream_id
@@ -69,7 +69,7 @@ They can carry the compressed header block for HTTP request or response headers.
 
 # Fields
 - `stream_id::UInt32`: Stream identifier (must be > 0)
-- `header_block_fragment::Vector{UInt8}`: Compressed header block fragment (HPACK encoded)
+- `header_block_fragment::Vector{UInt8}`: Compressed header block fragment (H2hpack encoded)
 - `end_stream::Bool`: END_STREAM flag - no more frames for this stream
 - `end_headers::Bool`: END_HEADERS flag - complete header block (no CONTINUATION frames follow)
 - `padded::Bool`: PADDED flag - indicates frame is padded
@@ -328,7 +328,7 @@ function create_headers_frame(
     priority_info::Union{PriorityInfo,Nothing} = nothing,
     encoder::HPACKEncoder,
 )
-    # Encode headers using HPACK
+    # Encode headers using H2hpack
     header_block = encode_headers(encoder, headers)
 
     return HeadersFrame(
