@@ -1,5 +1,5 @@
 using Test
-using HPACK
+using Http2Hpack
 using H2Frames
 
 @testset "H2Frames.jl - Frame Types and Serialization" begin
@@ -47,10 +47,10 @@ using H2Frames
     ack_sf = H2Frames.create_settings_ack()
     @test H2Frames.is_ack(ack_sf)
 
-    # Test PUSH_PROMISE frame (with HPACK)
-    encoder = HPACK.HPACKEncoder()
+    # Test PUSH_PROMISE frame (with Http2Hpack)
+    encoder = Http2Hpack.HPACKEncoder()
     headers = ["x-test" => "ok"]
-    header_block = HPACK.encode_headers(encoder, headers)
+    header_block = Http2Hpack.encode_headers(encoder, headers)
     ppf = H2Frames.PushPromiseFrame(1, 2, header_block)
     @test H2Frames.frame_type(ppf) == H2Frames.PUSH_PROMISE_FRAME
     @test H2Frames.stream_id(ppf) == 1
@@ -63,7 +63,7 @@ using H2Frames
     @test H2Frames.stream_id(contf) == 1
     @test contf.header_block_fragment == header_block
 
-    # Test HEADERS frame (with HPACK)
+    # Test HEADERS frame (with Http2Hpack)
     hf = H2Frames.create_headers_frame(1, headers, encoder)
     @test H2Frames.frame_type(hf) == H2Frames.HEADERS_FRAME
     @test H2Frames.stream_id(hf) == 1
