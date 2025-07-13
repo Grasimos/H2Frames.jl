@@ -3,7 +3,7 @@ module H2Frames
 # HTTP/2 Frame Interface and Binary Protocol Implementation
 # Based on RFC 7540: https://tools.ietf.org/html/rfc7540
 
-using HPACK # https://github.com/Grasimos/HPACK.jl
+using H2hpack # https://github.com/Grasimos/H2hpack.jl
 include("Exc.jl");
 using .Exc
 include("FrameTypes.jl");
