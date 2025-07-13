@@ -4,7 +4,7 @@ module PushPromise
 using Http2Hpack #https://github.com/Grasimos/Http2Hpack.jl
 using ..FrameTypes
 using ..Exc
-using ..H2Frames: is_valid_stream_id
+using ..Http2Frames: is_valid_stream_id
 
 import ..serialize_payload
 import ..frame_type

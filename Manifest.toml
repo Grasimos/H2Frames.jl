@@ -1,8 +1,8 @@
 # This file is machine-generated - editing it directly is not advised
 
-julia_version = "1.11.5"
+julia_version = "1.11.6"
 manifest_format = "2.0"
-project_hash = "8c6f2a510fbd0fa0c66a3644e1910ffe77605699"
+project_hash = "55266842c0160f1ee517907a103b346b10048086"
 
 [[deps.ANSIColoredPrinters]]
 git-tree-sha1 = "574baf8110975760d391c710b6341da1afa48d8c"
@@ -77,10 +77,10 @@ version = "2.50.0+0"
 
 [[deps.Http2Hpack]]
 deps = ["Documenter", "Test"]
-git-tree-sha1 = "34c4cde9b30da84d539caa8dff245ef6583fabf7"
+git-tree-sha1 = "3445ee18504191010d8a78472439218c72329680"
 repo-url = "https://github.com/Grasimos/Http2Hpack.jl"
 uuid = "03a3583f-3b84-4ec3-931d-7334ff455684"
-version = "0.2.0"
+version = "0.2.3"
 
 [[deps.IOCapture]]
 deps = ["Logging", "Random"]

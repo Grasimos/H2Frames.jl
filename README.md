@@ -1,4 +1,4 @@
-# H2Frames.jl
+# Http2Frames.jl
 
 A Julia package for working with HTTP/2 frames, including full support for all RFC 7540 frame types, robust error handling, and HPACK header compression. Suitable for building HTTP/2 protocol implementations, testing, and educational purposes.
 
@@ -6,13 +6,13 @@ A Julia package for working with HTTP/2 frames, including full support for all R
 
 ```julia
 using Pkg
-Pkg.add("H2Frames")
+Pkg.add("Http2Frames")
 ```
 
 ## Usage
 
 ```julia
-using H2Frames
+using Http2Frames
 
 # --- DATA frame ---
 data = [0x01, 0x02, 0x03]
@@ -69,7 +69,7 @@ Run tests with:
 
 ```julia
 using Pkg
-Pkg.test("H2Frames")
+Pkg.test("Http2Frames")
 ```
 
 ## Contributing

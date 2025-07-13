@@ -1,4 +1,4 @@
-name = "H2Frames"
+name = "Http2Frames"
 uuid = "7468a3b7-930e-48c8-a27b-9d42b62f3d3e"
 license = "MIT"
 authors = ["Gerasimos Panou <gerasimos.panou@gmail.com>"]
@@ -9,9 +9,7 @@ version = "0.4.3"
 Http2Hpack = "03a3583f-3b84-4ec3-931d-7334ff455684"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
-[sources]
-Http2Hpack = {url = "https://github.com/Grasimos/Http2Hpack.jl"}
-
 [compat]
-julia = "^1.11"
+Http2Hpack = "0.2.3"
 Test = "1.11.0"
+julia = "^1.11"

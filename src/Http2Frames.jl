@@ -1,4 +1,4 @@
-module H2Frames
+module Http2Frames
 
 # HTTP/2 Frame Interface and Binary Protocol Implementation
 # Based on RFC 7540: https://tools.ietf.org/html/rfc7540
