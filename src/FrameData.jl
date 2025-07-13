@@ -2,7 +2,7 @@ module FrameData
 # frames/data.jl - HTTP/2 DATA frame implementation
 using ..FrameTypes
 using ..Exc
-using ..H2Frames: is_valid_stream_id
+using ..Http2Frames: is_valid_stream_id
 
 import ..serialize_payload
 import ..frame_type
@@ -37,7 +37,7 @@ response payload.
 
 # Example
 ```julia
-using H2Frames
+using Http2Frames
 frame = DataFrame(1, [0x01, 0x02, 0x03]; end_stream=true)
 ```
 """

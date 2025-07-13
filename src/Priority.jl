@@ -45,7 +45,7 @@ Where:
 
 # Example
 ```julia
-using H2Frames
+using Http2Frames
 frame = PriorityFrame(3, false, 1, 10)
 ```
 """
