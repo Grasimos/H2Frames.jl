@@ -75,10 +75,10 @@ git-tree-sha1 = "b981ed24de5855f20fce5b8cb767c179f93e4268"
 uuid = "f8c6e375-362e-5223-8a59-34ff63f689eb"
 version = "2.50.0+0"
 
-[[deps.HPACK]]
+[[deps.Http2Hpack]]
 deps = ["Documenter", "Test"]
 git-tree-sha1 = "34c4cde9b30da84d539caa8dff245ef6583fabf7"
-repo-url = "https://github.com/Grasimos/HPACK.jl"
+repo-url = "https://github.com/Grasimos/Http2Hpack.jl"
 uuid = "03a3583f-3b84-4ec3-931d-7334ff455684"
 version = "0.2.0"
 
