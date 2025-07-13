@@ -6,11 +6,12 @@ description = "A Julia package for H2 matrix frames."
 version = "0.4.3"
 
 [deps]
-HPACK = "03a3583f-3b84-4ec3-931d-7334ff455684"
+H2hpack = "03a3583f-3b84-4ec3-931d-7334ff455684"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [sources]
-HPACK = {url = "https://github.com/Grasimos/HPACK.jl"}
+HPACK = {url = "https://github.com/Grasimos/H2hpack.jl"}
 
 [compat]
+julia = "^1.11"
 Test = "1.11.0"
