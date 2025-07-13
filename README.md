@@ -20,8 +20,8 @@ df = DataFrame(1, data; end_stream=true)
 bytes = serialize_frame(df)
 
 # --- HEADERS frame with HPACK ---
-using HPACK
-encoder = HPACK.HPACKEncoder()
+using Http2Hpack
+encoder = Http2Hpack.HPACKEncoder()
 headers = ["content-type" => "text/plain", "x-test" => "ok"]
 headers_frame = create_headers_frame(1, headers, encoder)
 
@@ -45,7 +45,7 @@ goaway = GoAwayFrame(5, GOAWAY_NO_ERROR)
 window_update = WindowUpdateFrame(1, 100)
 
 # --- PUSH_PROMISE frame ---
-header_block = HPACK.encode_headers(encoder, ["x-test" => "ok"])
+header_block = Http2Hpack.encode_headers(encoder, ["x-test" => "ok"])
 push_promise = PushPromiseFrame(1, 2, header_block)
 
 # --- CONTINUATION frame ---
