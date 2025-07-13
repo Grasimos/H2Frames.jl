@@ -1,7 +1,7 @@
 module PushPromise
 # PUSH_PROMISE Frame Implementation
 # RFC 7540 Section 6.6
-using HPACK #https://github.com/Grasimos/HPACK.jl
+using Http2Hpack #https://github.com/Grasimos/Http2Hpack.jl
 using ..FrameTypes
 using ..Exc
 using ..H2Frames: is_valid_stream_id
@@ -212,7 +212,7 @@ function create_push_promise_frame(
     request_headers::Vector{Pair{String,String}},
     hpack_encoder::HPACKEncoder,
 )
-    header_block = HPACK.encode_headers(hpack_encoder, request_headers)
+    header_block = Http2Hpack.encode_headers(hpack_encoder, request_headers)
 
     return PushPromiseFrame(
         original_stream_id,
